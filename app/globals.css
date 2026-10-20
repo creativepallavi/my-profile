@@ -1,0 +1,81 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-cream text-mauve font-sans antialiased transition-colors duration-500;
+  background-image:
+    radial-gradient(circle at 12% 8%, rgba(255, 179, 209, 0.35) 0, transparent 38%),
+    radial-gradient(circle at 90% 30%, rgba(231, 215, 255, 0.55) 0, transparent 40%),
+    radial-gradient(circle at 30% 95%, rgba(255, 220, 203, 0.5) 0, transparent 40%);
+  background-attachment: fixed;
+}
+
+.dark body {
+  @apply bg-plum text-petal;
+  background-image:
+    radial-gradient(circle at 12% 8%, rgba(214, 69, 127, 0.22) 0, transparent 40%),
+    radial-gradient(circle at 90% 30%, rgba(122, 76, 160, 0.3) 0, transparent 42%),
+    radial-gradient(circle at 30% 95%, rgba(255, 126, 176, 0.14) 0, transparent 40%);
+}
+
+::selection {
+  background: #ff7eb0;
+  color: white;
+}
+
+/* dotted notebook texture used on cards */
+.dots {
+  background-image: radial-gradient(rgba(255, 126, 176, 0.35) 1.5px, transparent 1.5px);
+  background-size: 18px 18px;
+}
+
+/* scroll reveal */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px) scale(0.98);
+  transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.reveal.in {
+  opacity: 1;
+  transform: none;
+}
+
+/* wavy underline for headings */
+.squiggle {
+  text-decoration: underline wavy #ff7eb0;
+  text-underline-offset: 8px;
+  text-decoration-thickness: 3px;
+}
+
+/* custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #ffb3d1;
+  border-radius: 999px;
+  border: 2px solid transparent;
+  background-clip: content-box;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+}
